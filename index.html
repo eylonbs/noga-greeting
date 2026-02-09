@@ -642,7 +642,67 @@
             </h3>
             <div class="gallery-wrapper">
                 <div class="gallery" id="babyGallery">
-                    <!-- Images will be loaded by JavaScript -->
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2009.27.10.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2015.35.42.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%281%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%282%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%281%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%282%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.23.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-05%20at%2015.26.56.jpeg" alt="נוגה">
+                    </div>
+                    <!-- Duplicate for infinite scroll -->
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2009.27.10.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2015.35.42.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%281%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%282%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%281%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%282%29.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.23.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./Noga_pictures/WhatsApp%20Image%202026-02-05%20at%2015.26.56.jpeg" alt="נוגה">
+                    </div>
                 </div>
             </div>
         </div>
@@ -749,43 +809,8 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
-        // Load gallery images
-        function loadGallery() {
-            const gallery = document.getElementById('babyGallery');
-            const images = [
-                'Noga_pictures/WhatsApp Image 2026-01-26 at 09.27.10.jpeg',
-                'Noga_pictures/WhatsApp Image 2026-01-26 at 15.35.42.jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21.jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21 (1).jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21 (2).jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22.jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22 (1).jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22 (2).jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.23.jpeg',
-                'Noga_pictures/WhatsApp Image 2026-02-05 at 15.26.56.jpeg'
-            ];
-            
-            // Duplicate images in code for seamless infinite scroll
-            for (let i = 0; i < 2; i++) {
-                images.forEach(src => {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.onclick = function() { openLightbox(this); };
-                    
-                    const img = document.createElement('img');
-                    img.src = encodeURI(src);
-                    img.alt = 'נוגה';
-                    img.loading = 'lazy';
-                    
-                    item.appendChild(img);
-                    gallery.appendChild(item);
-                });
-            }
-        }
-
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            loadGallery();
             createStars();
             createConfetti();
         });
