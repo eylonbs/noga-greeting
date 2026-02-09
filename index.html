@@ -324,12 +324,15 @@
             overflow: hidden;
             margin: 20px -40px 0 -40px;
             padding: 20px 0;
+            position: relative;
         }
 
         .gallery {
             display: flex;
             gap: 20px;
-            animation: scroll-gallery 40s linear infinite;
+            width: fit-content;
+            animation: scroll-gallery 35s linear infinite;
+            will-change: transform;
         }
 
         .gallery:hover {
@@ -337,11 +340,11 @@
         }
 
         @keyframes scroll-gallery {
-            from {
+            0% {
                 transform: translateX(0);
             }
-            to {
-                transform: translateX(calc(-240px * 10));
+            100% {
+                transform: translateX(-2400px);
             }
         }
 
