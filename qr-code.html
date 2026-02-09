@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code - ברוך הבא נוגה</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -28,20 +29,28 @@
             font-size: 2rem;
         }
         
-        p {
+        .subtitle {
             color: #5a7a8a;
             margin-bottom: 30px;
         }
         
-        .qr-container {
-            position: relative;
+        .qr-wrapper {
             background: white;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(108, 180, 217, 0.2);
         }
         
+        .qr-container {
+            position: relative;
+            display: inline-block;
+        }
+        
         #qrcode {
+            display: block;
+        }
+        
+        #qrcode img {
             display: block;
         }
         
@@ -50,10 +59,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 40px;
+            font-size: 36px;
             background: white;
-            padding: 5px;
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
             line-height: 1;
         }
         
@@ -64,8 +77,14 @@
             font-size: 0.9rem;
         }
         
-        .instructions strong {
+        .url-text {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            font-size: 0.85rem;
             color: #6cb4d9;
+            word-break: break-all;
         }
         
         button {
@@ -89,76 +108,33 @@
 </head>
 <body>
     <h1>👶 סרקו אותי!</h1>
-    <p>QR Code לדף הברכה של נוגה</p>
+    <p class="subtitle">QR Code לדף הברכה של נוגה</p>
     
-    <div class="qr-container">
-        <canvas id="qrcode"></canvas>
-        <div class="baby-emoji">👶</div>
+    <div class="qr-wrapper">
+        <div class="qr-container">
+            <div id="qrcode"></div>
+            <div class="baby-emoji">👶</div>
+        </div>
+    </div>
+    
+    <div class="url-text">
+        https://eylonbs.github.io/noga-greeting/
     </div>
     
     <div class="instructions">
-        <p>לחצו על הכפתור כדי לשמור את הקוד</p>
-        <p>או <strong>קליק ימני → שמור תמונה</strong></p>
+        <p>קליק ימני על הקוד → שמור תמונה</p>
     </div>
-    
-    <button onclick="downloadQR()">💾 הורד QR Code</button>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script>
-        const url = 'https://eylonbs.github.io/noga-greeting/';
-        
         // Generate QR code
-        QRCode.toCanvas(document.getElementById('qrcode'), url, {
-            width: 300,
-            margin: 2,
-            color: {
-                dark: '#2c4a5e',
-                light: '#ffffff'
-            },
-            errorCorrectionLevel: 'H' // High error correction to allow for logo
-        }, function(error) {
-            if (error) console.error(error);
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: "https://eylonbs.github.io/noga-greeting/",
+            width: 256,
+            height: 256,
+            colorDark: "#2c4a5e",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
         });
-        
-        // Download function
-        function downloadQR() {
-            const canvas = document.getElementById('qrcode');
-            const container = document.querySelector('.qr-container');
-            
-            // Create a new canvas with the emoji
-            const finalCanvas = document.createElement('canvas');
-            const ctx = finalCanvas.getContext('2d');
-            finalCanvas.width = 360;
-            finalCanvas.height = 360;
-            
-            // White background
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, 360, 360);
-            
-            // Draw QR code centered
-            ctx.drawImage(canvas, 30, 30);
-            
-            // Draw emoji in center
-            ctx.font = '50px serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            
-            // White circle behind emoji
-            ctx.fillStyle = 'white';
-            ctx.beginPath();
-            ctx.arc(180, 180, 35, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Emoji
-            ctx.fillText('👶', 180, 180);
-            
-            // Download
-            const link = document.createElement('a');
-            link.download = 'noga-qr-code.png';
-            link.href = finalCanvas.toDataURL('image/png');
-            link.click();
-        }
     </script>
 </body>
 </html>
-
