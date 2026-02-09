@@ -319,77 +319,64 @@
             opacity: 0.9;
         }
 
-        /* Photo Gallery - Infinite Auto Scrolling */
+        /* Photo Gallery - Simple Grid */
         .gallery-wrapper {
-            overflow: hidden;
-            margin: 20px -40px 0 -40px;
-            padding: 20px 0;
-            position: relative;
+            overflow-x: auto;
+            margin: 20px -20px 0 -20px;
+            padding: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--baby-blue) transparent;
+        }
+
+        .gallery-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-wrapper::-webkit-scrollbar-thumb {
+            background: var(--baby-blue);
+            border-radius: 10px;
         }
 
         .gallery {
             display: flex;
-            gap: 20px;
-            width: fit-content;
-            animation: scroll-gallery 35s linear infinite;
-            will-change: transform;
-        }
-
-        .gallery:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll-gallery {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-2400px);
-            }
+            gap: 15px;
+            direction: ltr;
         }
 
         .gallery-item {
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            width: 220px;
-            height: 220px;
+            min-width: 200px;
+            height: 200px;
             flex-shrink: 0;
             cursor: pointer;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .gallery-item:hover {
-            transform: scale(1.08);
-            box-shadow: 0 15px 40px rgba(108, 180, 217, 0.4);
-            z-index: 10;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(108, 180, 217, 0.4);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
         }
 
         .gallery-item::after {
             content: '💙';
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 1.5rem;
+            bottom: 8px;
+            right: 8px;
+            font-size: 1.2rem;
             opacity: 0;
-            transform: scale(0);
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
         .gallery-item:hover::after {
             opacity: 1;
-            transform: scale(1);
         }
 
         /* Present Section */
@@ -675,37 +662,6 @@
                     <div class="gallery-item" onclick="openLightbox(this)">
                         <img src="Noga_pictures/noga10.jpeg" alt="נוגה">
                     </div>
-                    <!-- Duplicate for infinite scroll -->
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga1.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga2.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga3.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga4.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga5.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga6.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga7.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga8.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga9.jpeg" alt="נוגה">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/noga10.jpeg" alt="נוגה">
-                    </div>
                 </div>
             </div>
         </div>
@@ -769,25 +725,31 @@
             }
         }
 
-        // Create confetti on load
+        // Create confetti continuously
         function createConfetti() {
             const confettiContainer = document.getElementById('confetti');
             const colors = ['#87ceeb', '#a8d8ea', '#f4d160', '#ffffff', '#6cb4d9', '#ffd1dc'];
             
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti-piece';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
-                    confettiContainer.appendChild(confetti);
-                    
-                    // Remove after animation
-                    setTimeout(() => confetti.remove(), 5000);
-                }, i * 50);
+            function addConfetti() {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
+                confettiContainer.appendChild(confetti);
+                
+                // Remove after animation
+                setTimeout(() => confetti.remove(), 5000);
             }
+            
+            // Initial burst
+            for (let i = 0; i < 30; i++) {
+                setTimeout(addConfetti, i * 50);
+            }
+            
+            // Continuous confetti every 200ms
+            setInterval(addConfetti, 200);
         }
 
         // Lightbox functions
