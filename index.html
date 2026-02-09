@@ -319,28 +319,31 @@
             opacity: 0.9;
         }
 
-        /* Photo Gallery - Simple Grid */
+        /* Photo Gallery - Auto Scrolling */
         .gallery-wrapper {
-            overflow-x: auto;
+            overflow: hidden;
             margin: 20px -20px 0 -20px;
             padding: 20px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--baby-blue) transparent;
-        }
-
-        .gallery-wrapper::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .gallery-wrapper::-webkit-scrollbar-thumb {
-            background: var(--baby-blue);
-            border-radius: 10px;
         }
 
         .gallery {
             display: flex;
             gap: 15px;
             direction: ltr;
+            animation: scroll-gallery 25s linear infinite;
+        }
+
+        .gallery:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-gallery {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .gallery-item {
@@ -632,6 +635,37 @@
             </h3>
             <div class="gallery-wrapper">
                 <div class="gallery" id="babyGallery">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga1.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga2.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga3.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga4.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga5.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga6.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga7.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga8.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga9.jpeg" alt="נוגה">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Noga_pictures/noga10.jpeg" alt="נוגה">
+                    </div>
+                    <!-- Duplicate for seamless loop -->
                     <div class="gallery-item" onclick="openLightbox(this)">
                         <img src="Noga_pictures/noga1.jpeg" alt="נוגה">
                     </div>
