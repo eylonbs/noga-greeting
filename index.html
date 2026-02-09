@@ -133,7 +133,7 @@
             100% { left: 100vw; }
         }
 
-        /* Flying birds */
+        /* Flying birds - CSS V-shape */
         .birds {
             position: fixed;
             top: 0;
@@ -147,45 +147,82 @@
 
         .bird {
             position: absolute;
-            font-size: 24px;
-            animation: fly-bird linear infinite;
+            width: 12px;
+            height: 12px;
+            opacity: 0.5;
+            animation: fly-bird linear infinite, flap 0.3s ease-in-out infinite;
+        }
+
+        .bird::before,
+        .bird::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 3px;
+            background: #4a5568;
+            border-radius: 50%;
+            top: 50%;
+        }
+
+        .bird::before {
+            left: 0;
+            transform: rotate(-20deg);
+            transform-origin: right center;
+        }
+
+        .bird::after {
+            right: 0;
+            transform: rotate(20deg);
+            transform-origin: left center;
         }
 
         .bird-1 {
             top: 12%;
-            animation-duration: 15s;
+            animation-duration: 12s, 0.3s;
             animation-delay: 0s;
         }
 
         .bird-2 {
             top: 8%;
-            font-size: 20px;
-            animation-duration: 18s;
-            animation-delay: -6s;
+            transform: scale(0.8);
+            animation-duration: 15s, 0.25s;
+            animation-delay: -5s;
         }
 
         .bird-3 {
-            top: 20%;
-            font-size: 18px;
-            animation-duration: 22s;
-            animation-delay: -10s;
+            top: 18%;
+            transform: scale(0.6);
+            opacity: 0.4;
+            animation-duration: 18s, 0.35s;
+            animation-delay: -8s;
         }
 
         .bird-4 {
-            top: 30%;
-            font-size: 22px;
-            animation-duration: 16s;
+            top: 25%;
+            transform: scale(0.9);
+            animation-duration: 14s, 0.28s;
             animation-delay: -3s;
         }
 
+        .bird-5 {
+            top: 15%;
+            transform: scale(0.7);
+            opacity: 0.35;
+            animation-duration: 20s, 0.32s;
+            animation-delay: -12s;
+        }
+
         @keyframes fly-bird {
-            0% { 
-                right: -50px;
-                transform: scaleX(1);
+            0% { left: -30px; }
+            100% { left: 110%; }
+        }
+
+        @keyframes flap {
+            0%, 100% { 
+                transform: scaleY(1);
             }
-            100% { 
-                right: 110%;
-                transform: scaleX(1);
+            50% { 
+                transform: scaleY(0.6);
             }
         }
 
@@ -614,10 +651,11 @@
 
     <!-- Flying Birds -->
     <div class="birds">
-        <div class="bird bird-1">🕊️</div>
-        <div class="bird bird-2">🕊️</div>
-        <div class="bird bird-3">🕊️</div>
-        <div class="bird bird-4">🕊️</div>
+        <div class="bird bird-1"></div>
+        <div class="bird bird-2"></div>
+        <div class="bird bird-3"></div>
+        <div class="bird bird-4"></div>
+        <div class="bird bird-5"></div>
     </div>
 
     <!-- Stars -->
@@ -677,65 +715,65 @@
                 <div class="gallery" id="babyGallery">
                     <!-- Original set -->
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-01-26 at 09.27.10.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2009.27.10.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-01-26 at 15.35.42.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2015.35.42.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21 (1).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%281%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21 (2).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%282%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22 (1).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%281%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22 (2).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%282%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.23.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.23.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-05 at 15.26.56.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-05%20at%2015.26.56.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <!-- Duplicated set for seamless loop -->
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-01-26 at 09.27.10.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2009.27.10.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-01-26 at 15.35.42.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-01-26%20at%2015.35.42.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21 (1).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%281%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.21 (2).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.21%20%282%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22 (1).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%281%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.22 (2).jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.22%20%282%29.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-04 at 17.40.23.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-04%20at%2017.40.23.jpeg" alt="נוגה" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Noga_pictures/WhatsApp Image 2026-02-05 at 15.26.56.jpeg" alt="נוגה" loading="lazy">
+                        <img src="Noga_pictures/WhatsApp%20Image%202026-02-05%20at%2015.26.56.jpeg" alt="נוגה" loading="lazy">
                     </div>
                 </div>
             </div>
